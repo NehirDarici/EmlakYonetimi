@@ -180,8 +180,8 @@ public class EmlakApp extends Application {
                 bstFiyatAgaci.addAll(tabloVerisi); // Sadece tablodaki (bulunan) evleri fiyata göre ağaca diz
 
                 // Ağacın subSet (Alt Küme) özelliğini kullanarak O(log N) hızında aralığı buluyoruz
-                Property dummyMin = new Property(0, 0, 0, minFiyat, "", 0);
-                Property dummyMax = new Property(0, 0, 0, maxFiyat, "", 0);
+                Property dummyMin = new Property(0, 0, 0, minFiyat, "");
+                Property dummyMax = new Property(0, 0, 0, maxFiyat, "");
 
                 // Ağaçtan filtrelenmiş verileri çek
                 SortedSet<Property> filtrelenmis = bstFiyatAgaci.subSet(dummyMin, true, dummyMax, true);
