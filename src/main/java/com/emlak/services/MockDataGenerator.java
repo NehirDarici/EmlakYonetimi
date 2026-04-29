@@ -21,16 +21,18 @@ public class MockDataGenerator {
             double x = Math.round(random.nextDouble() * 100.0 * 100.0) / 100.0;
             double y = Math.round(random.nextDouble() * 100.0 * 100.0) / 100.0;
 
-            // Fiyat (1.000.000 TL ile 10.000.000 TL arası)
-            // Daha gerçekçi durması için son 4 hanesini sıfırlıyoruz (Örn: 2.450.000 TL)
+            // Fiyat hesaplaması (Senin özel algoritman - DEĞİŞTİRİLMEDİ)
             double price = 20000 + (random.nextDouble() * 90000);
             price = Math.round(price / 10000) * 10000;
 
             // Rastgele tip seçimi
             String type = types[random.nextInt(types.length)];
 
-            // TERTEMİZ NESNE ÜRETİMİ (Sadece 5 parametre: id, x, y, price, type)
-            Property newProperty = new Property(id, x, y, price, type);
+            // YENİ EKLENEN: Rastgele oda sayısı üretimi (1 ile 5 arası)
+            int rooms = random.nextInt(5) + 1;
+
+            // GÜNCELLENMİŞ NESNE ÜRETİMİ (6 parametre: id, x, y, price, type, rooms)
+            Property newProperty = new Property(id, x, y, price, type, rooms);
 
             properties.add(newProperty);
         }

@@ -6,22 +6,43 @@ public class Property {
     private double y;
     private double price;
     private String type;
+    private int rooms;
 
     // Sadece gerçekten kullanacağımız verilerle oluşturulan Constructor (Yapıcı Metot)
-    public Property(int id, double x, double y, double price, String type) {
+    public Property(int id, double x, double y, double price, String type, int rooms) {
         this.id = id;
         this.x = x;
         this.y = y;
         this.price = price;
         this.type = type;
+        this.rooms = rooms;
     }
 
-    // Getters (Arayüzdeki tabloların ve ağaçların verilere erişebilmesi için)
-    public int getId() { return id; }
-    public double getX() { return x; }
-    public double getY() { return y; }
-    public double getPrice() { return price; }
-    public String getType() { return type; }
+    // --- GETTER METOTLARI ---
+    public int getId() {
+        return id;
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public int getRooms() {
+        return rooms;
+    }
+
 
     // Java bu objeyi ekrana yazdırırken bellek adresini değil, bu metni kullanacak
     @Override
