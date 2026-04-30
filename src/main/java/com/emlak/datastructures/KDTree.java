@@ -39,7 +39,7 @@ public class KDTree {
         // K=2 olduğu için derinlik 0'da X'e, 1'de Y'ye bakıyoruz (depth % 2)
         int cd = depth % 2;
 
-        if (cd == 0) { // X eksenine göre kıyasla
+        if (cd == 0) { // X eksenine göre kıyaslama
             if (property.getX() < root.property.getX())
                 root.left = insertRec(root.left, property, depth + 1);
             else

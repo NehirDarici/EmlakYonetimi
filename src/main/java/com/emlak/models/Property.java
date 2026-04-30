@@ -8,7 +8,7 @@ public class Property {
     private String type;
     private int rooms;
 
-    // Sadece gerçekten kullanacağımız verilerle oluşturulan Constructor (Yapıcı Metot)
+    //Constructor (Yapıcı Metot)
     public Property(int id, double x, double y, double price, String type, int rooms) {
         this.id = id;
         this.x = x;
@@ -18,7 +18,7 @@ public class Property {
         this.rooms = rooms;
     }
 
-    // --- GETTER METOTLARI ---
+    // GETTER METOTLARI
     public int getId() {
         return id;
     }
@@ -44,7 +44,6 @@ public class Property {
     }
 
 
-    // Java bu objeyi ekrana yazdırırken bellek adresini değil, bu metni kullanacak
     @Override
     public String toString() {
         return "İlan ID: " + id + " | " + type + " | " + price + " TL";

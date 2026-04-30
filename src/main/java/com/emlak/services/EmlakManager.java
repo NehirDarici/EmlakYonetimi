@@ -14,7 +14,7 @@ public class EmlakManager {
     private HashSet<Integer> favoriIdSet = new HashSet<>();
     private Queue<String> randevuKuyrugu = new LinkedList<>();
 
-    // 1. Veri Üretimi ve Yapıların Doldurulması
+    //Veri Üretimi ve Yapıların Doldurulması
     public void sistemVerileriniUret(int count) {
         mevcutVeri = MockDataGenerator.generateData(count);
         kdTree = new KDTree();
@@ -35,19 +35,19 @@ public class EmlakManager {
         }
     }
 
-    // 2. Sadece Fiyata Göre Arama (BST)
+    //Sadece Fiyata Göre Arama (BST)
     public List<Property> fiyataGoreAra(double minFiyat, double maxFiyat) {
         Property minProp = new Property(0, 0.0, 0.0, minFiyat, "", 0);
         Property maxProp = new Property(Integer.MAX_VALUE, 0.0, 0.0, maxFiyat, "", 0);
         return new ArrayList<>(fiyatAgaciBST.subSet(minProp, maxProp));
     }
 
-    // 3. Sadece Konuma Göre Arama (KD-Tree)
+    //Sadece Konuma Göre Arama (KD-Tree)
     public List<Property> konumaGoreAra(double tx, double ty, double radius) {
         return kdTree.findInRadius(tx, ty, radius);
     }
 
-    // 4. Hem Konum Hem Fiyat Arama (Kesişim)
+    //Hem Konum Hem Fiyat Arama (Kesişim)
     public List<Property> kapsamliAra(double tx, double ty, double radius, double minFiyat, double maxFiyat) {
         List<Property> bolgedekiEvler = kdTree.findInRadius(tx, ty, radius);
 
@@ -64,7 +64,7 @@ public class EmlakManager {
         return sonuclar;
     }
 
-    // 5. Lineer Arama (Kıyaslama İçin O(N))
+    //Lineer Arama (Kıyaslama İçin O(N))
     public List<Property> lineerAra(double tx, double ty, double tr, double minFiyat, double maxFiyat, boolean fiyatAktif) {
         List<Property> sonuclar = new ArrayList<>();
         for (Property p : mevcutVeri) {
@@ -76,7 +76,7 @@ public class EmlakManager {
         return sonuclar;
     }
 
-    // 6. En Ucuz Fırsatları Bul (BST üzerinden)
+    //En Ucuz Fırsatları Bul (BST üzerinden)
     public List<Property> ucuzFirsatlariBul(Collection<Property> evler) {
         TreeSet<Property> ucuzEvlerBST = new TreeSet<>(Comparator.comparingDouble(Property::getPrice).thenComparingInt(Property::getId));
         ucuzEvlerBST.addAll(evler);
@@ -88,7 +88,7 @@ public class EmlakManager {
         return firsatlar;
     }
 
-    // 7. Diğer Veri Yapısı İşlemleri (HashSet, Queue, Graph)
+    //Diğer Veri Yapısı İşlemleri (HashSet, Queue, Graph)
     public boolean favoriEkle(int id) { return favoriIdSet.add(id); }
     public boolean favoriSil(int id) { return favoriIdSet.remove(id); }
     public void randevuTalebiEkle(String req) { randevuKuyrugu.offer(req); }

@@ -16,10 +16,10 @@ import java.util.*;
 
 public class EmlakArayuz extends Application {
 
-    // İŞTE BÜYÜ TIK BURADA: Tüm backend işlemleri bu objeye devredildi
+
     private EmlakManager backendManager = new EmlakManager();
 
-    // Sadece Arayüzde (Ekranda) gösterilecek listeler
+
     private ObservableList<Property> favoriGosterimListesi = FXCollections.observableArrayList();
     private LinkedList<Property> sonGezilenler = new LinkedList<>();
     private ObservableList<Property> gecmisGosterimListesi = FXCollections.observableArrayList();
@@ -30,9 +30,9 @@ public class EmlakArayuz extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("Emlak 360 - MVC Mimari Paneli");
+        primaryStage.setTitle("Emlak İlan Arama");
 
-        // --- SOL PANEL ---
+        // SOL PANEL
         VBox leftPanel = new VBox(10);
         leftPanel.setPadding(new Insets(10));
         leftPanel.setStyle("-fx-background-color: #f4f4f4; -fx-border-color: #ccc; -fx-border-width: 0 1 0 0;");
@@ -60,7 +60,7 @@ public class EmlakArayuz extends Application {
 
         leftPanel.getChildren().addAll(new Label("Veri Boyutu:"), dataSizeBox, btnUret, new Separator(), new Label("A. Fiyat Aralığı:"), new HBox(5, txtMin, txtMax), new Label("B. Merkez Noktası:"), cmbMekan, new Label("C. Arama Çapı (km):"), txtR, new Separator(), new Label("Arama Seçenekleri:"), btnFiyatAra, btnMekanAra, btnKapsamliAra, new Separator(), btnUndo);
 
-        // --- ORTA PANEL ---
+        // ORTA PANEL
         VBox centerPanel = new VBox(10); centerPanel.setPadding(new Insets(10));
         TableView<Property> table = new TableView<>();
         TableColumn<Property, Integer> idCol = new TableColumn<>("İlan ID"); idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -82,7 +82,7 @@ public class EmlakArayuz extends Application {
         ListView<Property> firsatView = new ListView<>(firsatEvlerListesi); firsatView.setPrefHeight(80);
         centerPanel.getChildren().addAll(new Label("Arama Sonuçları"), table, favActionBox, appointmentBox, new Separator(), lblBST, firsatView);
 
-        // --- SAĞ PANEL ---
+        // SAĞ PANEL
         VBox rightPanel = new VBox(8); rightPanel.setPadding(new Insets(10)); rightPanel.setPrefWidth(300); rightPanel.setStyle("-fx-background-color: #2b2b2b;");
         Label lblPerf = new Label("PERFORMANS ANALİZİ"); lblPerf.setStyle("-fx-text-fill: #FFD700; -fx-font-weight: bold;");
         Label lblLinear = new Label("Dizi (Linear) Süresi: - ms"); lblLinear.setStyle("-fx-text-fill: #ff5252;");
@@ -98,9 +98,6 @@ public class EmlakArayuz extends Application {
         ListView<Property> recView = new ListView<>(gecmisGosterimListesi); recView.setPrefHeight(90);
         rightPanel.getChildren().addAll(lblPerf, lblLinear, lblTree, lblFark, new Separator(), lblGraph, graphView, lblQueue, queueView, lblFav, favView, lblRec, recView);
 
-        // ==========================================
-        // BUTON AKSİYONLARI (Sadece Manager'ı Çağırır)
-        // ==========================================
 
         btnUret.setOnAction(e -> {
             backendManager.sistemVerileriniUret(dataSizeBox.getValue());
