@@ -58,7 +58,7 @@ public class EmlakArayuz extends Application {
         Button btnKapsamliAra = new Button("3. Konum + Fiyat (İkisi Birlikte)"); btnKapsamliAra.setStyle("-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-weight: bold;"); btnKapsamliAra.setMaxWidth(Double.MAX_VALUE); btnKapsamliAra.setDisable(true);
         Button btnUndo = new Button("⟲ Tabloyu Geri Al (Stack)"); btnUndo.setMaxWidth(Double.MAX_VALUE);
 
-        leftPanel.getChildren().addAll(new Label("Veri Boyutu:"), dataSizeBox, btnUret, new Separator(), new Label("A. Fiyat Aralığı:"), new HBox(5, txtMin, txtMax), new Label("B. Merkez Noktası:"), cmbMekan, new Label("C. Arama Çapı (km):"), txtR, new Separator(), new Label("Arama Seçenekleri:"), btnFiyatAra, btnMekanAra, btnKapsamliAra, new Separator(), btnUndo);
+        leftPanel.getChildren().addAll(new Label("Veri Boyutu:"), dataSizeBox, btnUret, new Separator(), new Label("A. Fiyat Aralığı:"), new HBox(5, txtMin, txtMax), new Label("B. Merkez Noktası:"), cmbMekan, new Label("C. Arama Yarıçapı (km):"), txtR, new Separator(), new Label("Arama Seçenekleri:"), btnFiyatAra, btnMekanAra, btnKapsamliAra, new Separator(), btnUndo);
 
         // ORTA PANEL
         VBox centerPanel = new VBox(10); centerPanel.setPadding(new Insets(10));
@@ -134,7 +134,7 @@ public class EmlakArayuz extends Application {
                 table.setItems(FXCollections.observableArrayList(sonuclar));
                 lblLinear.setText("Dizi: Hesaplanmadı"); lblTree.setText(String.format("KD-Tree Süresi: %.4f ms", sure)); lblFark.setText("Algoritma: Sadece KD-Tree");
                 firsatEvlerListesi.setAll(backendManager.ucuzFirsatlariBul(sonuclar));
-            } catch (Exception ex) { new Alert(Alert.AlertType.ERROR, "Geçerli çap girin!").show(); }
+            } catch (Exception ex) { new Alert(Alert.AlertType.ERROR, "Geçerli yarıçap girin!").show(); }
         });
 
         btnKapsamliAra.setOnAction(e -> {
