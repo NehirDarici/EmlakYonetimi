@@ -17,7 +17,7 @@ public class MockDataGenerator {
         for (int i = 1; i <= count; i++) {
             int id = i;
 
-            // X ve Y Koordinatları (0.0 ile 100.0 km arası, virgülden sonra 2 hane)
+            // X ve Y Koordinatları
             double x = Math.round(random.nextDouble() * 100.0 * 100.0) / 100.0;
             double y = Math.round(random.nextDouble() * 100.0 * 100.0) / 100.0;
 
